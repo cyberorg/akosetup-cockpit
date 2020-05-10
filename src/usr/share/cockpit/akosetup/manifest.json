@@ -1,0 +1,10 @@
+{
+    "version": 0,
+
+    "tools": {
+        "akosetup": {
+            "label": "Akosetup",
+            "path": "index.html"
+        }
+    }
+}

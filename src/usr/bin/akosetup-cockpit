@@ -1,0 +1,12 @@
+#!/bin/bash
+sed -i -e s"@var AP_SSID =.*@var AP_SSID = \"$1\";@g" /usr/share/cockpit/akosetup/ako.js
+sed -i -e s"@var AP_PASS =.*@var AP_PASS = \"$2\";@g" /usr/share/cockpit/akosetup/ako.js
+sed -i -e s"@var AP_IP =.*@var AP_IP = \"$3\";@g" /usr/share/cockpit/akosetup/ako.js
+sed -i -e s"@var NET_CONNECT =.*@var NET_CONNECT = \"$4\";@g" /usr/share/cockpit/akosetup/ako.js
+sed -i -e s"@ssid=.*@ssid=$1@g" /var/www/ap/akohome.nmconnection
+sed -i -e s"@psk=.*@psk=$2@g" /var/www/ap/akohome.nmconnection
+sed -i -e s"@address1=.*@address1=$3/24,@g" /var/www/ap/akohome.nmconnection
+/bin/systemctl restart apsetup
+/usr/bin/nmcli con reload AKOBOX
+/usr/bin/nmcli con up AKOBOX
+
