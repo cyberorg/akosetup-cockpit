@@ -1,8 +1,8 @@
 #!/bin/bash
 #setup dnsmasq on IP address change
 if [ "$2" = "up" ];then
-	if test -f /var/www/ap/ap.conf; then
-		. /var/www/ap/ap.conf
+	if test -f /usr/share/cockpit/akosetup/ap.conf; then
+		. /usr/share/cockpit/akosetup/ap.conf
 		. /usr/bin/networkvariables.sh 2>/dev/null|| true
 		if [ ! -z "$DHCPD_INTERFACE" ]; then
 			if [[ x"$NET_CONNECT" == xtrue ]]; then
@@ -12,5 +12,6 @@ if [ "$2" = "up" ];then
 			fi
 		fi
 	fi
+	mssipchangeap
 fi
 
