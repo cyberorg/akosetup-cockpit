@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Please wait"
 sed -i -e s"@var AP_SSID =.*@var AP_SSID = \"$1\";@g" /usr/share/cockpit/akosetup/ako.js
 sed -i -e s"@var AP_PASS =.*@var AP_PASS = \"$2\";@g" /usr/share/cockpit/akosetup/ako.js
 sed -i -e s"@var AP_IP =.*@var AP_IP = \"$3\";@g" /usr/share/cockpit/akosetup/ako.js
@@ -13,4 +14,4 @@ sed -i -e s"@NET_CONNECT=.*@NET_CONNECT=$4@g" /usr/share/cockpit/akosetup/ap.con
 
 /usr/bin/nmcli con reload AKOBOX
 /usr/bin/nmcli con up AKOBOX
-
+echo "Setup completed, please reconnect to the access point if needed"
