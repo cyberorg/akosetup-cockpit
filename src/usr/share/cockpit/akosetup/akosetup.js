@@ -2,14 +2,14 @@ const NAP_SSID = document.getElementById("AP_SSID");
 const NAP_PASS = document.getElementById("AP_PASS");
 const NAP_IP = document.getElementById("AP_IP");
 const NNET_CONNECT = document.getElementById("NET_CONNECT");
-const NNET_CONNECT_MODE = document.getElementById("NET_CONNECT_MODE");
+//const NNET_CONNECT_MODE = document.getElementById("NET_CONNECT_MODE");
 const address = document.getElementById("address");
 const output = document.getElementById("output");
 const result = document.getElementById("result");
 const button = document.getElementById("apapply");
 
 function apsetup_run() {
-    cockpit.spawn(["/usr/bin/akosetup-cockpit", NAP_SSID.value, NAP_PASS.value, NAP_IP.value, NNET_CONNECT.value, NNET_CONNECT_MODE.value] , { superuser: true })
+    cockpit.spawn(["/usr/bin/akosetup-cockpit", NAP_SSID.value, NAP_PASS.value, NAP_IP.value, NNET_CONNECT.value] , { superuser: true })
         .stream(apapply_output)
         .then(apapply_success)
         .catch(apapply_fail);

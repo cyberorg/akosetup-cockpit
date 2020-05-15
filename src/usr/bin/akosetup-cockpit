@@ -4,7 +4,7 @@ sed -i -e s"@var AP_SSID =.*@var AP_SSID = \"$1\";@g" /usr/share/cockpit/akosetu
 sed -i -e s"@var AP_PASS =.*@var AP_PASS = \"$2\";@g" /usr/share/cockpit/akosetup/ako.js
 sed -i -e s"@var AP_IP =.*@var AP_IP = \"$3\";@g" /usr/share/cockpit/akosetup/ako.js
 sed -i -e s"@var NET_CONNECT =.*@var NET_CONNECT = \"$4\";@g" /usr/share/cockpit/akosetup/ako.js
-sed -i -e s"@var NET_CONNECT_MODE =.*@var NET_CONNECT_MODE = \"$5\";@g" /usr/share/cockpit/akosetup/ako.js
+#sed -i -e s"@var NET_CONNECT_MODE =.*@var NET_CONNECT_MODE = \"$5\";@g" /usr/share/cockpit/akosetup/ako.js
 sed -i -e s"@ssid=.*@ssid=$1@g" /etc/NetworkManager/system-connections/akohome.nmconnection 
 sed -i -e s"@psk=.*@psk=$2@g" /etc/NetworkManager/system-connections/akohome.nmconnection
 sed -i -e s"@address1=.*@address1=$3/24,@g" /etc/NetworkManager/system-connections/akohome.nmconnection
@@ -12,14 +12,14 @@ sed -i -e s"@AP_SSID=.*@AP_SSID=$1@g" /usr/share/cockpit/akosetup/ap.conf
 sed -i -e s"@AP_PASS=.*@AP_PASS=$2@g" /usr/share/cockpit/akosetup/ap.conf
 sed -i -e s"@AP_IP=.*@AP_IP=$3@g" /usr/share/cockpit/akosetup/ap.conf
 sed -i -e s"@NET_CONNECT=.*@NET_CONNECT=$4@g" /usr/share/cockpit/akosetup/ap.conf
-sed -i -e s"@NET_CONNECT_MODE=.*@NET_CONNECT_MODE=$5@g" /usr/share/cockpit/akosetup/ap.conf
-if [[ x"$5" == xstatic ]]; then
-	sed -i -e s"@autoconnect=.*@autoconnect=true@g" /etc/NetworkManager/system-connections/static
-	sed -i -e s"@autoconnect=.*@autoconnect=false@g" /etc/NetworkManager/system-connections/dynamic
-else
-        sed -i -e s"@autoconnect=.*@autoconnect=false@g" /etc/NetworkManager/system-connections/static
-        sed -i -e s"@autoconnect=.*@autoconnect=true@g" /etc/NetworkManager/system-connections/dynamic
-fi
+#sed -i -e s"@NET_CONNECT_MODE=.*@NET_CONNECT_MODE=$5@g" /usr/share/cockpit/akosetup/ap.conf
+#if [[ x"$5" == xstatic ]]; then
+#	sed -i -e s"@autoconnect=.*@autoconnect=true@g" /etc/NetworkManager/system-connections/static
+#	sed -i -e s"@autoconnect=.*@autoconnect=false@g" /etc/NetworkManager/system-connections/dynamic
+#else
+#        sed -i -e s"@autoconnect=.*@autoconnect=false@g" /etc/NetworkManager/system-connections/static
+#        sed -i -e s"@autoconnect=.*@autoconnect=true@g" /etc/NetworkManager/system-connections/dynamic
+#fi
 
 /usr/bin/nmcli con reload 
 /usr/bin/nmcli con up AKOBOX
